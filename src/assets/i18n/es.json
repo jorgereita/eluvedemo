@@ -1,0 +1,16 @@
+{
+    "COMMONS":{
+        "OK":"Confirmar",
+        "ALERT": "Atención",
+        "ERROR_SERVICE": "Error en la conexion con servidor"
+    },
+    "LOGIN":{
+        "ELUVE_TEXT":"ELUVE BPM",
+        "LOGIN_TITLE":"Iniciar sesión",
+        "LOGIN_USER":"Usuario",
+        "LOGIN_PASS":"Contraseña",
+        "LOGIN_BUTTON":"Ingresar"
+    }
+    
+
+}
