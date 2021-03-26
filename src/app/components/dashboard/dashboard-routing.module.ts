@@ -8,10 +8,14 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardPage,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
+        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+      },
+      {
+        path: 'home2',
         loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       }
     ]

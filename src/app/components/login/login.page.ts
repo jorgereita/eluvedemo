@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -27,11 +27,13 @@ export class LoginPage implements OnInit {
   public isLoading: boolean;
   constructor(
     public router: Router,
+    public navCtrl: NavController,
     public formBuilder: FormBuilder,
     public translate: TranslateService,
     private authService: AuthService,
     private alertCtrl: AlertController,
     public loadingController: LoadingController
+    
   ) { }
 
   ngOnInit() {
@@ -69,20 +71,23 @@ export class LoginPage implements OnInit {
   }
 
   logIn() {
-    this.present();
-    this.authService.authenticate(this.loginForm.value.username, this.loginForm.value.password).subscribe(res => {
-      this.dismiss();
-      if (res.error !== 0) {
-        this.presentAlert(res.error_message);
-        return;
-      }
-      localStorage.setItem('token', res.token);
-      localStorage.setItem('expired', res.expiry_time.toString());
-      localStorage.setItem('roleId', res.role_id.toString());
-      this.router.navigate(["/dashboard/home"]);
-    }, err => {
-      this.dismiss();
-      this.presentAlert(this.translate.instant('COMMONS.ERROR_SERVICE'));
-    });
+
+    this.navCtrl.navigateForward('/dashboard/home');
+    
+    // this.present();
+    // this.authService.authenticate(this.loginForm.value.username, this.loginForm.value.password).subscribe(res => {
+    //   this.dismiss();
+    //   if (res.error !== 0) {
+    //     this.presentAlert(res.error_message);
+    //     return;
+    //   }
+    //   localStorage.setItem('token', res.token);
+    //   localStorage.setItem('expired', res.expiry_time.toString());
+    //   localStorage.setItem('roleId', res.role_id.toString());
+    //   this.router.navigate(["/dashboard/home"]);
+    // }, err => {
+    //   this.dismiss();
+    //   this.presentAlert(this.translate.instant('COMMONS.ERROR_SERVICE'));
+    // });
   }
 }

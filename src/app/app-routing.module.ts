@@ -8,7 +8,7 @@ import { NoAuthGuard } from './guards/no-auth.guard';
 const routes: Routes = [
   {
     path: 'login',
-    canActivate: [NoAuthGuard],
+    // canActivate: [NoAuthGuard],
     loadChildren: () => import('./components/login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -16,10 +16,10 @@ const routes: Routes = [
     redirectTo:'dashboard',
     pathMatch:'full'
   },
-  { path: '**', redirectTo: 'dashboard' , pathMatch:'full'},
+  // { path: '**', redirectTo: 'dashboard' , pathMatch:'full'},
   {
     path: 'dashboard',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     loadChildren: () => import('./components/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   }, 
   {

@@ -19,43 +19,67 @@
       </ul>
     </div>
   </div>
-  <div class="auth__right center">
-    <form [formGroup]="loginForm">
+  <div class="auth__right center rows-2">
+    <div class="resbanner-1">
 
-      <h2 class="border-primary-strong"> {{"LOGIN.LOGIN_TITLE" | translate }} </h2>
+    </div>
+    <div class="is-full resbanner">
+      <div class="area-2">
+        <h1>{{"LOGIN.ELUVE_TEXT" | translate }}</h1>
 
-      <ion-list>
-        <ion-item>
-          <ion-label position="floating" class="has-padding-b-1">{{"LOGIN.LOGIN_USER" | translate }}</ion-label>
-          <ion-input formControlName="username" type="text">
-          </ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating" class="has-padding-b-1">{{"LOGIN.LOGIN_PASS" | translate }}</ion-label>
-
-          <!-- <ion-input formControlName="password" type="password" show-hide-input></ion-input> -->
-
-          <ion-input #passwordEyeRegister [type]="passwordTypeInput" formControlName="password" clearOnEdit="false" class="has-w-90">
-          </ion-input>
-          <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
-            <ion-icon [name]="(passwordTypeInput === 'text')?'eye-off':'eye'"></ion-icon>
-          </button>
-        </ion-item>
+        <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
 
 
-      </ion-list>
+      </div>
+    </div>
 
-      <ion-row class="signin">
-        <ion-col>
-          <!-- <ion-button class="eluve-button" color="primary" shape="full" expand="block">{{"LOGIN.LOGIN_BUTTON" | translate }}</ion-button> -->
-          <button [attr.disabled]="!loginForm.valid ? '' : null"
-            [ngClass]="loginForm.valid?'eluve-button-active':'eluve-button-disable'"
-            (click)="logIn()">{{"LOGIN.LOGIN_BUTTON" | translate }} </button>
+    <div class="is-full justify-center">
+      <form [formGroup]="loginForm" class="has-padding-t-4 form-size">
+        <h2> {{"LOGIN.LOGIN_TITLE" | translate }} </h2>
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating" class="has-padding-b-1">{{"LOGIN.LOGIN_USER" | translate }}</ion-label>
+            <ion-input formControlName="username" type="text" placeholder="LOGIN.LOGIN_USER">
+            </ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-label position="floating" class="has-padding-b-1">{{"LOGIN.LOGIN_PASS" | translate }}</ion-label>
+            <ion-input #passwordEyeRegister autocomplete="off" [type]="passwordTypeInput" placeholder="LOGIN.LOGIN_PASS"
+              formControlName="password" clearOnEdit="false" class="has-w-90">
+            </ion-input>
+            <button item-end class="btn_eye_icon" (click)="togglePasswordMode()">
+              <ion-icon [name]="(passwordTypeInput === 'text')?'eye-off':'eye'"></ion-icon>
+            </button>
+          </ion-item>
 
-        </ion-col>
-      </ion-row>
 
-    </form>
+        </ion-list>
+
+        <ion-row class="signin">
+          <ion-col>
+            <!-- <ion-button class="eluve-button" color="primary" shape="full" expand="block">{{"LOGIN.LOGIN_BUTTON" | translate }}</ion-button> -->
+            <button [attr.disabled]="!loginForm.valid ? '' : null"
+              [ngClass]="loginForm.valid?'eluve-button-active':'eluve-button-disable'"
+              (click)="logIn()">{{"LOGIN.LOGIN_BUTTON" | translate }} </button>
+
+          </ion-col>
+        </ion-row>
+      </form>
+
+
+    </div>
+
   </div>
 </div>

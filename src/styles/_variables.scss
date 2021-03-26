@@ -7,11 +7,28 @@
   place-items: center;
   text-align: center;
 }
-.has-padding-b-1{
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+.is-full {
+  height: 100%;
+  width: 100%;
+}
+
+.has-padding-b-1 {
   padding-bottom: 1rem;
 }
-.has-w-90{
+
+.has-w-90 {
   width: 90%;
+}
+
+.has-w-50 {
+  width: 50%;
+}
+.has-padding-t-4{
+  padding-top: 4rem;
 }
 ///------------------------------
 // Colors Common class 
@@ -37,6 +54,7 @@
   position: relative;
   vertical-align: middle;
 }
+
 .eluve-button-active {
   background: none;
   border: 0;
@@ -112,4 +130,3 @@
       height 0.25s ease-out 0.75s; // And finally height
   }
 }
-

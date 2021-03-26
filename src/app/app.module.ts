@@ -15,6 +15,8 @@ import { InterceptService } from './services/intercept.service';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/no-auth.guard';
 import { AuthService } from './services/auth.service';
+import { enterAnimation } from './animations/nav-animation';
+ 
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -25,7 +27,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+       navAnimation: enterAnimation
+      }),
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -38,7 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthGuard, NoAuthGuard, AuthService , {
+  providers: [ { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, AuthGuard, NoAuthGuard, AuthService , {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptService,
     multi: true
